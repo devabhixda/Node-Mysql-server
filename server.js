@@ -45,3 +45,12 @@ app.get(table,(req,res)=>{
     res.json(rows);
   })
 })
+
+//UPDATE
+app.put(table+'/:id',(req,res)=>{
+  let task=req.body;
+  con.query('UPDATE todo.tasks SET `todo_description`=? WHERE `task_id`=?',[task.todo_description,req.params.id],(err,rows,fields)=>{
+  if(err) throw err;
+  res.send('Updated Successfully')
+  })
+})
