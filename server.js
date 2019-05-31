@@ -62,3 +62,10 @@ app.delete(table+'/:id',(req,res)=>{
     res.send('Task Deleted Successfully')
   })
 })
+
+app.get(table+'/:id',(req,res)=>{
+  con.query('SELECT * FROM todo.tasks WHERE `task_id`=?',[req.params.id],(err,rows,fields)=>{
+    if(err) throw err;
+    res.json(rows);
+  })
+})
