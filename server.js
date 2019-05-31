@@ -54,3 +54,11 @@ app.put(table+'/:id',(req,res)=>{
   res.send('Updated Successfully')
   })
 })
+
+//DELETE
+app.delete(table+'/:id',(req,res)=>{
+  con.query('DELETE FROM todo.tasks WHERE `task_id`=?',[req.params.id],(err,rows,fields)=>{
+    if(err) throw err;
+    res.send('Task Deleted Successfully')
+  })
+})
