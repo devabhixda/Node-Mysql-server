@@ -37,3 +37,11 @@ app.post(table,(req,res)=>{
   res.send(JSON.stringify(rows))
   })
 })
+
+//READ
+app.get(table,(req,res)=>{
+  con.query('SELECT * from todo.tasks',(err,rows,fields)=>{
+    if(err) throw err;
+    res.json(rows);
+  })
+})
